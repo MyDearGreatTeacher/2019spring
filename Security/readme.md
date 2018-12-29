@@ -41,6 +41,12 @@ Windows server 2016 AD測試環境建置
 
 Powershell技術
 ```
+# 網路攻擊測試技術工具
+```
+Kali linux
+
+hping
+```
 # 網路攻擊技術
 ```
 arp spoofing
