@@ -1,4 +1,36 @@
 # 錄影教學
+
+```
+[已買]Hands-On Cybersecurity with Blockchain
+Rajneesh Gupta
+June 2018
+非常重要
+```
+
+```
+[已買]Create Ethereum and Blockchain Applications Using Solidity [Video]
+Frahaan Hussain
+Thursday, May 31, 2018
+```
+
+```
+Hyperledger for Blockchain Applications [Video]
+Alejandro Vicente Grabovetsky
+Friday, August 31, 2018
+```
+
+```
+Hyperledger Fabric and Composer - First Practical Blockchain [Video]
+Dr. Mohammad Nauman
+Tuesday, December 18, 2018 
+```
+
+```
+Learn Python by Building a Blockchain and Cryptocurrency [Video]
+Maximilian Schwarzmüller
+Thursday, August 30, 2018
+```
+
 ```
 Blockchain Real World Projects [Video]
 Sriharsha Bingi
@@ -32,6 +64,12 @@ Saturday, September 29, 2018
 ```
 
 # 參考書籍
+
+```
+[已買]Hands-On Blockchain with Hyperledger
+Nitin Gaur et al.
+June 2018
+```
 ```
 Introduction to Blockchain and Ethereum
 David W. Parker
