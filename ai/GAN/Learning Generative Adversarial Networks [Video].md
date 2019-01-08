@@ -1,0 +1,18 @@
+```
+Learning Generative Adversarial Networks [Video]
+Kuntal Ganguly
+Tuesday, January 23, 2018
+```
+
+```
+
+```
+
+
+```
+UNSUPERVISED DEEP LEARNING WITH GAN
+TRANSFER IMAGE STYLE ACROSS VARIOUS DOMAINS
+BUILDING REALISTIC IMAGES FROM TEXT
+TAKING MACHINE LEARNING TO PRODUCTION
+
+```
