@@ -1,6 +1,24 @@
+#
+```
+3 My First GAN in Under 100 Lines
+```
 
-### 使用Docker執行
+# 使用Docker執行
 
+### Dockerfile
+```
+FROM base_image
+
+RUN apt install -y python3-pydot python-pydot-ng graphviz
+#RUN pip3 install ipython
+#RUN pip3 install django-extensions
+#RUN pip3 install pyparsing
+#RUN pip3 install graphviz
+#RUN pip3 install pydot
+
+ADD . /
+```
+### run.sh
 ```
 #/bin/bash
 nvidia-docker build -t ch3 . 
@@ -14,9 +32,11 @@ docker run -it \
    -v $HOME/full-gan/data:/data \
    ch3 python3 run.py
 ```
-
+```
+chmod 775 run.sh
+sudo ./run.sh
+```
 ### run.py
-
 
 ```
 #!/usr/bin/env python3
@@ -148,34 +168,154 @@ class Trainer:
 ```
 
 
+### generator.py
 
-### 
+```
+#!/usr/bin/env python3
+import sys
+import numpy as np
+from keras.layers import Dense, Reshape
+from keras.layers import BatchNormalization
+from keras.layers.advanced_activations import LeakyReLU
+from keras.models import Sequential, Model
+from keras.optimizers import Adam
+from keras.utils import plot_model
+
+class Generator(object):
+    def __init__(self, width = 28, height= 28, channels = 1, latent_size=100):
+        self.W = width
+        self.H = height
+        self.C = channels
+        self.OPTIMIZER = Adam(lr=0.0002, decay=8e-9)
+
+        self.LATENT_SPACE_SIZE = latent_size
+        self.latent_space = np.random.normal(0,1,(self.LATENT_SPACE_SIZE,))
+
+        self.Generator = self.model()
+        self.Generator.compile(loss='binary_crossentropy', optimizer=self.OPTIMIZER)
+        self.save_model()
+        self.summary()
+
+    def model(self, block_starting_size=128,num_blocks=4):
+        model = Sequential()
+        
+        block_size = block_starting_size 
+        model.add(Dense(block_size, input_shape=(self.LATENT_SPACE_SIZE,)))
+        model.add(LeakyReLU(alpha=0.2))
+        model.add(BatchNormalization(momentum=0.8))
+
+        for i in range(num_blocks-1):
+            block_size = block_size * 2
+            model.add(Dense(block_size))
+            model.add(LeakyReLU(alpha=0.2))
+            model.add(BatchNormalization(momentum=0.8))
+
+        model.add(Dense(self.W * self.H * self.C, activation='tanh'))
+        model.add(Reshape((self.W, self.H, self.C)))
+        
+        return model
+
+    def summary(self):
+        return self.Generator.summary()
+
+    def save_model(self):
+        plot_model(self.Generator.model, to_file='/data/Generator_Model.png')
+
+
+
 
 ```
 
 
 
+### discriminator.py
+
+```
+#!/usr/bin/env python3
+import sys
+import numpy as np
+from keras.layers import Input, Dense, Reshape, Flatten, Dropout
+from keras.layers.advanced_activations import LeakyReLU
+from keras.models import Sequential, Model
+from keras.optimizers import Adam
+from keras.utils import plot_model
+
+
+class Discriminator(object):
+    def __init__(self, width = 28, height= 28, channels = 1, latent_size=100):
+        self.CAPACITY = width*height*channels
+        self.SHAPE = (width,height,channels)
+        self.OPTIMIZER = Adam(lr=0.0002, decay=8e-9)
+
+
+        self.Discriminator = self.model()
+        self.Discriminator.compile(loss='binary_crossentropy', optimizer=self.OPTIMIZER, metrics=['accuracy'] )
+        self.save_model()
+        self.summary()
+
+    def model(self):
+        model = Sequential()
+        model.add(Flatten(input_shape=self.SHAPE))
+        model.add(Dense(self.CAPACITY, input_shape=self.SHAPE))
+        model.add(LeakyReLU(alpha=0.2))
+        model.add(Dense(int(self.CAPACITY/2)))
+        model.add(LeakyReLU(alpha=0.2))
+        model.add(Dense(1, activation='sigmoid'))
+        return model
+
+    def summary(self):
+        return self.Discriminator.summary()
+
+    def save_model(self):
+        plot_model(self.Discriminator.model, to_file='/data/Discriminator_Model.png')
+
+
+
+
 ```
 
 
 
-### 
+### gan.py
+
+```
+#!/usr/bin/env python3
+import sys
+import numpy as np
+from keras.models import Sequential, Model
+from keras.optimizers import Adam
+from keras.utils import plot_model
+
+class GAN(object):
+    def __init__(self,discriminator,generator):
+        self.OPTIMIZER = Adam(lr=0.0002, decay=8e-9)
+        
+        self.Generator = generator
+
+        self.Discriminator = discriminator
+        self.Discriminator.trainable = False
+        
+        self.gan_model = self.model()
+        self.gan_model.compile(loss='binary_crossentropy', optimizer=self.OPTIMIZER)
+        self.save_model()
+        self.summary()
+
+    def model(self):
+        model = Sequential()
+        model.add(self.Generator)
+        model.add(self.Discriminator)
+        return model
+
+    def summary(self):
+        return self.gan_model.summary()
+
+    def save_model(self):
+        plot_model(self.gan_model.model, to_file='/data/GAN_Model.png')
+
+
 
 ```
 
-
-
-```
-
-
-
-### 
-
-```
-
-
-
-```
 
 
 
