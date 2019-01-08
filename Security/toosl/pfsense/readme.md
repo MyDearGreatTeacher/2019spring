@@ -14,11 +14,25 @@ https://zh.wikipedia.org/wiki/PfSense
 
 https://www.netgate.com/training/
 ```
+# 參考資料
 ```
 Mastering pfSense, Second Edition Birmingham, UK: Packt Publishing, 2018. ISBN 978-1788993173. By David Zientra.
 
 Security: Manage Network Security With pfSense Firewall [Video] 
 Birmingham, UK: Packt Publishing, 2018. ISBN 978-1789538991. By Manuj Aggarwal.
+```
+```
+打造家用防火牆的需求 by pfSense (一) 簡介篇
+https://www.mobile01.com/topicdetail.php?f=300&t=251395
+```
+
+```
+在 QNAP NAS 安裝 pfSense
+https://www.qnap.com/zh-hk/how-to/tutorial/article/%E5%9C%A8-qnap-nas-%E5%AE%89%E8%A3%9D-pfsense/
+```
+
+```
+
 ```
 
 # pfsense@Youtube
