@@ -1,0 +1,12 @@
+```
+Data Analysis with Python [Video]
+Marco Bonzanini
+Saturday, April 29, 2017
+```
+
+```
+PYTHON CORE
+NUMPY FOR ARRAY COMPUTATION
+PANDAS FOR DATA FRAMES
+EXERCISE – TITANIC SURVIVOR ANALYSIS
+```
