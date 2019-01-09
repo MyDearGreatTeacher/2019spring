@@ -47,3 +47,4 @@ model.load_weights(filepath, by_name=False): 從 HDF5 檔（由 save_weights 創
 除了這兩類模型之外，你還可以通過繼承 Model 類並在 call 方法中實現你自己的前向傳播，以創建你自己的完全定制化的模型，
 （Model 類繼承 API 引入於 Keras 2.2.0）。
 ```
+https://colab.research.google.com/drive/1I9zhxEbNvZ6_9iyKe524EoiMr_f5Nn5T
