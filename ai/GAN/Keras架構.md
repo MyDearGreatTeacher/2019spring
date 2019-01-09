@@ -12,6 +12,8 @@ Keras 的開發重點是支持快速的實驗。能夠以最小的時延把你�
 ```
 # Keras參考書目
 ```
+https://keras.io/zh/
+
 https://detail.tmall.com/item.htm?spm=a230r.1.14.75.4a3e3dc1BgMDSW&id=582584961300&ns=1&abbucket=16
 https://github.com/yanchao727/keras_book
 ```
