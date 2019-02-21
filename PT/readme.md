@@ -10,6 +10,7 @@ Ubuntu 系統管理與架站實務(第三版)
 語言：繁體中文
 定價：650元
 優惠價：95折618元
+https://www.books.com.tw/products/0010802922
 ```
 ```
 python證照與攻擊測試
