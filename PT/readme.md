@@ -1,6 +1,8 @@
 # 課程重點:
 ```
 熟悉linux伺服器安裝及日誌分析
+NAT log分析
+Web log分析==>https://www.loganalyzer.net/log-analysis-tutorial/what-is-log-file.html
 ```
 ```
 Ubuntu 系統管理與架站實務(第三版)
